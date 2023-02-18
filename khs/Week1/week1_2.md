@@ -85,7 +85,7 @@
     - 가상 메모리를 사용
 - 커널 주소 공간의 내용
     
-    ![(./image)
+    ![Kernel](./image.png)
     
     - PCB
         - **Process control block**
