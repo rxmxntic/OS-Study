@@ -35,8 +35,9 @@
    
    - Thread
    	- 주소 공간
-      - stack, data, code로 이루어져있다.
-    - PCB
+      - stack, data, code로 이루어져있다.  
+   
+   - PCB
         - program counter와 register를 포함한다.
         - 각 쓰레드(CPU 수행단위)마다 register에 어떤 값을 넣고,  program counter가 코드 어느 부분을 가리키고 실행되는가를 별도로 유지한다.
         - 프로세스 하나 당 공유할 수 있는 것을 최대한 공유한다.
@@ -44,14 +45,14 @@
         - 별도로 가지고 있는 것
             - CPU 수행과 관련된 정보
             - Program Counter
-            - Stack
-            
-    - **Lightweight Process**    
+            - Stack        
     
-    - **구성**    	
-       - program counter
-       - register set
-       - stack space
+- **Lightweight Process**    
+    
+ - **구성**    	
+      - program counter
+      - register set
+    - stack space
        
     - **동료 Thread와 공유하는 부분(=task)**
         - code section
@@ -59,22 +60,29 @@
         - OS resources
         - **즉, 하나의 프로세스 안에 thread가 여러개 있다면 task는 하나만 있다는 뜻.**
             - 프로세스를 별도로 두는 것 보다 프로세스 안에 Thread를 여러개 두는 것이 훨씬 가볍기 때문에 효율적이다.
+
     - **전통적인 개념의 heavyweight process는 하나의 thread를 가지고 있는 task로 볼 수 있다.**
-    - **다중 스레드로 구성된 Task 구조**에서는 하나의 서버 스레드가 **blocked(waiting)**상태인 동안에도 동일한 태스크 내의 다른 스레드가 **실행(running)**되어 빠른 처리를 할 수 있다
-    - 동일한 일을 수행하는 다중 스레드가 협력하여 **높은 처리율(throughput)**과 성능 향상을 얻을 수 있다
+    - **다중 스레드로 구성된 Task 구조**에서는 하나의 서버 스레드가 **blocked(waiting)** 상태인 동안에도 동일한 태스크 내의 다른 스레드가 **실행(running)** 되어 빠른 처리를 할 수 있다
+    - 동일한 일을 수행하는 다중 스레드가 협력하여 **높은 처리율(throughput)** 과 성능 향상을 얻을 수 있다
         - 메모리 등 자원들을 아낄 수 있다는 의미이다.
             - 같은 일을 하는 프로세스를 여러개 띄워놓는다면 각각의 메모리에 올라가야 하기 때문에 메모리 낭비가 심하다.
+
     - 스레드를 사용하면 **병렬성**을 높일 수 있다.
         
        - 이례적인 경우.
             - CPU가 여러개 달린 컴퓨터에서만 얻을 수 있는 장점.
-       		- 1000*1000 행렬 곱의 경우 독립적인 연산인데, CPU가 하나라              면 곱을 순차적으로 연산한다. 하지만 여러개 있다면 곱을              부분을 나눠서 수행한 후 마지막에 합친다.
+       		- 1000*1000 행렬 곱의 경우 독립적인 연산인데, CPU가 하나라면 곱을 순차적으로 연산한다. 하지만 여러개 있다면 곱을 부분을 나눠서 수행한 후 마지막에 합친다.
+
             ![](https://velog.velcdn.com/images/losie2/post/824e0c7c-9d5f-4149-8e11-b88d9c61b866/image.png)
-          🧨 위 처럼 (4 x 2)행렬과 (2 x 3)행렬의 경우 총 열 두번의 연산이 필요하다.
-            🧨 열 두번의 연산을 CPU가 세 개인 경우 네 개씩 나누어 처리하기 때문에 연산이 빨라진다는 의미.
+
+
+        🧨 위 처럼 (4 x 2)행렬과 (2 x 3)행렬의 경우 총 열 두번의 연산이 필요하다.
+        
+        🧨 열 두번의 연산을 CPU가 세 개인 경우 네 개씩 나누어 처리하기 때문에 연산이 빨라진다는 의미.
+
     ![](https://velog.velcdn.com/images/losie2/post/75e4ffff-b099-4ea3-ac97-42de300a43dc/image.png)
-       - process는 하나이기 때문에 PCB는 하나만 생성
-         - 쓰레드는 프로세스 마다 가지고 있는 정보 중 CPU 수행과 관련된 정보만 별도로 가지고 있게 된다.**(lightweight)**
+    - process는 하나이기 때문에 PCB는 하나만 생성
+           - 쓰레드는 프로세스 마다 가지고 있는 정보 중 CPU 수행과 관련된 정보만 별도로 가지고 있게 된다.**(lightweight)**
     
 - **Thread의 장점**
     - **Responsiveness**
